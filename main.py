@@ -42,6 +42,7 @@ def get_life_expectancy_data():
     df = df.rename(columns={'Countries': 'Country', 'all': 'Life_expectancy'})
     return df
 
+
 def get_gdp_data():
     df = get_wiki_data("https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)_per_capita")
     df = pd.DataFrame(df[0])
@@ -57,7 +58,7 @@ def unify_countries(df1, df2, df3, df4):
     df2 = df2[df2['Country'].isin(countries)]
     df3 = df3[df3['Country'].isin(countries)]
     df4 = df4[df4['Country'].isin(countries)]
-    return df1, df2, df3
+    return df1, df2, df3, df4
 
 
 def make_plot_linear_regression(x, y, xlim=(0, 10), ylim=(0, 10), filename='plot'):
@@ -76,7 +77,8 @@ hapiness = get_happiness_data()
 life_expectancy = get_life_expectancy_data()
 gdp_data = get_gdp_data()
 
-alcohol_per_capita, hapiness, life_expectancy = unify_countries(alcohol_per_capita, hapiness, life_expectancy, gdp_data)
+alcohol_per_capita, hapiness, life_expectancy, gdp_data = unify_countries(alcohol_per_capita, hapiness,
+                                                                          life_expectancy, gdp_data)
 
 data = pd.merge(alcohol_per_capita, hapiness, on='Country')
 data = pd.merge(data, life_expectancy, on='Country')
