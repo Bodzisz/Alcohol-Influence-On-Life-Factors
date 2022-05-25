@@ -82,10 +82,7 @@ data = pd.merge(alcohol_per_capita, hapiness, on='Country')
 data = pd.merge(data, life_expectancy, on='Country')
 data = pd.merge(data, gdp_data, on='Country')
 
-# Data: ['Country, 'Alcohol_per_capita, 'Hapiness', 'Life_expectancy']
-
-# print(data.values)
-# print(len(data.values))
+# Data: ['Country, 'Alcohol_per_capita, 'Hapiness', 'Life_expectancy', 'GDP']
 
 make_plot_linear_regression(data['Alcohol_per_capita'], data['Happiness'], (0, 16), (3, 8), 'happiness_dependence')
 make_plot_linear_regression(data['Alcohol_per_capita'], data['Life_expectancy'], (0, 16), (50, 90),
