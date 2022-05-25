@@ -69,7 +69,7 @@ def make_plot_linear_regression(x, y, xlim=(0, 10), ylim=(0, 10), filename='plot
 
     plt.xlim(xlim[0], xlim[1])
     plt.ylim(ylim[0], ylim[1])
-    plt.savefig(filename)
+    plt.savefig('plots/' + filename)
 
 
 alcohol_per_capita = get_alcohol_per_capita_data()
