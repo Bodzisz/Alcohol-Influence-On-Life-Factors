@@ -49,12 +49,12 @@ Dane o wyżej wymionych czynnikach zostały pobrane z ogólnodostępnego źród�
 \end{itemize}
 Z tabel wzięte zostały potrzebne kolumny oraz umieszczone w ramkach danych biblioteki \texttt{Pandas}.
 Dla każdego z czynników (współczynnik szczęścia, średnia długość życia oraz PKB per capita) zostały stworzone osobne zależności od alkoholu wypitego na osobę poprzez użycie regresji liniowej oraz regresji wielomianowej 4 stopnia, dzięki której mamy dokładniejsze spojrzenie na zależność.
-W tym celu użyliśmy funkcji \texttt{polyfit()} z bilbioteki \texttt{numpy}, która używa metody najmniejszych kwadratów do wyznaczenia tych regresjii.
+Użyłem do tego funkcji \texttt{polyfit()} z bilbioteki \texttt{numpy}, która używa metody najmniejszych kwadratów do wyznaczenia tych regresjii.
 \pagebreak
 \section{Rezultaty obliczeń}
 
 \subsection{Plan badań}
-Dla ułatwienia obliczeń do danych wzieliśmy średnie wartości w 144 krajach.
+Dla ułatwienia obliczeń do danych wziąłem średnie wartości w 144 krajach.
 Zatem jeden "rekord" danych jest dla jednego kraju.
 Przykładowe przetworzone dane pokazano w tabeli poniżej:
 
@@ -138,7 +138,9 @@ Obserwujemy duży przyrost po lokalnym minimum przy 6 litrach wypitych rocznie, 
 \section{Wnioski}
 Pokazane wyżej zależności wskazują na fakt, że ogólnie alkohol daje nam szczęście, wydłuża życie oraz pomaga nam rozwijać się finansowo - z zastrzeżeniem, że możemy przesadzić z ilością wypitego alkoholu co może skutkowac nagłą obniżką tych wartości.
 Myślę że każdy po przeczytaniu powyższego zdania miał co do niego mieszane myśli, bo przecież wszyscy wiemy, że alkohol szkodzi zdrowiu.
-Pokazuje to jak trudno jest znaleźć zależności w prawdziwym świecie, w tym także co od czego zależy. Znając powyższe warto byłoby przemyśleć odwrotną zależność np. ilość wypitego alkoholu od PKB.
+Pokazuje to jak trudno jest znaleźć zależności w prawdziwym świecie, w tym także co od czego zależy oraz jak szeroki kontekst potrzbujemy do określenia zależności.
+Suche dane często nie wystarczają.
+Znając powyższe warto byłoby przemyśleć odwrotną zależność np. ilość wypitego alkoholu od PKB.
 
 \pagebreak
 \appendix
