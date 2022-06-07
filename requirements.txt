@@ -5,4 +5,3 @@ bs4
 numpy
 matplotlib
 lxml
-sklearn

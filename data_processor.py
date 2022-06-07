@@ -2,6 +2,11 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 
+ALCOHOL_DATA_URL = "https://en.wikipedia.org/wiki/List_of_countries_by_alcohol_consumption_per_capita"
+HAPPINESS_DATA_URL = "https://en.wikipedia.org/wiki/World_Happiness_Report"
+LIFE_EXPECTANCY_DATA_URL = "https://en.wikipedia.org/wiki/List_of_countries_by_life_expectancy"
+GDP_DATA_URL = "https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)_per_capita"
+
 
 def get_wiki_data(url, table_num, backup_filename=None, multi_index=False):
     resp = requests.get(url)
@@ -23,8 +28,7 @@ def get_wiki_data(url, table_num, backup_filename=None, multi_index=False):
 
 
 def get_alcohol_per_capita_data():
-    df = get_wiki_data("https://en.wikipedia.org/wiki/List_of_countries_by_alcohol_consumption_per_capitaDUPA",
-                       0, "alcohol_per_capita")
+    df = get_wiki_data(ALCOHOL_DATA_URL, 0, "alcohol_per_capita")
     df = df[['Country', '2016[8]']].copy()
     df = df.rename(columns={'2016[8]': 'Alcohol_per_capita'})
     df['Alcohol_per_capita'] = pd.to_numeric(df['Alcohol_per_capita'], errors='coerce')
@@ -32,24 +36,21 @@ def get_alcohol_per_capita_data():
 
 
 def get_happiness_data():
-    df = get_wiki_data("https://en.wikipedia.org/wiki/World_Happiness_Report",
-                       0, "happiness")
+    df = get_wiki_data(HAPPINESS_DATA_URL, 0, "happiness")
     df = df[['Country or region', 'Score']].copy()
     df = df.rename(columns={'Country or region': 'Country', 'Score': 'Happiness'})
     return df
 
 
 def get_life_expectancy_data():
-    df = get_wiki_data("https://en.wikipedia.org/wiki/List_of_countries_by_life_expectancyDUPA",
-                       0, "life_expectancy")
+    df = get_wiki_data(LIFE_EXPECTANCY_DATA_URL, 0, "life_expectancy")
     df = df[['Countries', 'all']].copy()
     df = df.rename(columns={'Countries': 'Country', 'all': 'Life_expectancy'})
     return df
 
 
 def get_gdp_data():
-    df = get_wiki_data("https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)_per_capita",
-                       0, "gdp_per_capita", True)
+    df = get_wiki_data(GDP_DATA_URL, 0, "gdp_per_capita", True)
     df = df.loc[:, (['Country/Territory', 'World Bank[7]'], ['Country/Territory', 'Estimate'])]
     df.columns = ['Country', 'GDP']
     df['Country'] = df['Country'].map(lambda x: x.replace('\u202f*', ''))
